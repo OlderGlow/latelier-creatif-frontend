@@ -1,0 +1,33 @@
+$animate: all 0.2s ease-in-out;
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity:100%;
+  animation: fadein 0.5s;
+}
+
+@keyframes fadein{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 100;
+  }
+}
+
+@keyframes fadeout{
+  from{
+    opacity: 100;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+.fadein{
+  animation: fadein 0.5s;
+}
+
+.fadeout{
+  animation: fadeout 0.5s;
+}

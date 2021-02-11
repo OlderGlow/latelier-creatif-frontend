@@ -1,0 +1,92 @@
+<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2">
+  <div class="py-6 flex flex-col justify-center sm:py-4">
+    <div class="py-3 sm:w-max sm:mx-auto">
+      <div class=" px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+        <div class="mx-auto">
+          <div class="flex items-center space-x-5 ">
+            <div class="block pl-2 font-semibold text-xl text-gray-700">
+              <h2 class="leading-relaxed text-center mb-3">Nous contacter</h2>
+              <p class="text-sm text-gray-500 font-normal leading-relaxed">Veuillez remplir le formulaire et nous vous
+                répondrons aussitôt que possible.</p>
+            </div>
+          </div>
+          <div class="divide-y divide-gray-200">
+            <form [formGroup]="formMail" onsubmit="sendMail()">
+              <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                <div class="flex flex-col sm:grid sm:grid-cols-2 sm:space-x-4">
+                  <div class="flex flex-col">
+                    <label class="leading-loose">Votre prénom</label>
+                    <input type="text"
+                      class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                      placeholder="Votre prénom" formControlName="firstName">
+                  </div>
+                  <div class="flex flex-col">
+                    <label class="leading-loose">Votre nom</label>
+                    <input type="text"
+                      class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                      placeholder="Votre nom" formControlName="lastName">
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label class="leading-loose">Votre adresse mail</label>
+                  <input type="text"
+                    class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                    placeholder="Votre adresse mail" formControlName="email">
+                </div>
+              </div>
+              <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7">
+                <label class="leading-loose">Votre message</label>
+                <textarea rows=10 cols=10
+                  class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                  placeholder="Écrivez votre message ici" formControlName="content"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="pt-4 grid grids-col-2 sm:flex sm:items-center sm:space-x-4">
+            <button (click)="onClick()"
+              class="bg-purple-600 mb-2 sm:mb-0 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Envoyer<svg
+                class="ml-1 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                </path>
+              </svg></button>
+            <button
+              class="bg-red-600 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none"
+              routerLink="/">
+              Annuler<svg class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="py-6 flex flex-col justify-center sm:py-4">
+    <div class="py-3 sm:w-max sm:mx-auto">
+      <div class=" px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+        <div class="mx-auto">
+          <div class="flex items-center space-x-5">
+            <div class="block pl-2 font-semibold text-xl text-gray-700">
+              <h2 class="leading-relaxed mb-3">Retrouvez-nous sur Facebook !</h2>
+            </div>
+          </div>
+          <div class="divide-y divide-gray-200">
+            <div class="flex flex-row py-6 mx-auto max-w-xs sm:max-w-lg sm:h-auto">
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLAtelier-Cr%25C3%25A9atif-1045505258984838&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=431494570330147"
+                width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                class="rounded-xl"></iframe>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

@@ -1,0 +1,83 @@
+/* MODAL STYLES
+-------------------------------*/
+app-jw-modal {
+  /* modals are hidden by default */
+  display: none;
+
+  .jw-modal {
+      /* modal container fixed across whole screen */
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      /* z-index must be higher than .jw-modal-background */
+      z-index: 1000;
+
+      /* enables scrolling for tall modals */
+      overflow: auto;
+
+      .jw-modal-body {
+          padding: 20px;
+          background: #fff;
+
+          /* margin exposes part of the modal background */
+          margin: 40px;
+      }
+  }
+
+  .jw-modal-background {
+      /* modal background fixed across whole screen */
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      /* semi-transparent black  */
+      background-color: #000;
+      opacity: 0.75;
+
+      /* z-index must be below .jw-modal and above everything else  */
+      z-index: 900;
+  }
+}
+
+body.jw-modal-open {
+  overflow: hidden;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  }
+  @keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  }
+
+  .fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0}
+    }
+    @keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0}
+    }

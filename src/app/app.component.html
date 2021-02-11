@@ -1,0 +1,53 @@
+<div class="flex flex-col h-screen justify-between" *ngIf="router.url != '/admin/login'">
+  <div class="colorstart">
+    <div class="colorend">
+      <div class="flex-col row colorisersvg absolute inset-x-0 sm:mt-52 mt-60 pointer-events-none"
+        style="z-index: -500;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 63">
+          <defs>
+            <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#6222ca" />
+              <stop offset="100%" stop-color="#7c3aed" />
+            </linearGradient>
+          </defs>
+          <path class="bg-inward" d="M390,0H0V63C132.73,38.18,256.36,25.76,390,25.76S667.27,38.18,800,63V0Z" />
+        </svg>
+      </div>
+      <app-navbar></app-navbar>
+      <app-maincontent></app-maincontent>
+      <app-footer class="flex flex-col"></app-footer>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col h-screen justify-between" *ngIf="router.url === '/admin/login'">
+  <div class="colorstart">
+    <div class="colorend">
+      <div class="flex-col row colorisersvg absolute inset-x-0 sm:mt-52 mt-56 pointer-events-none"
+        style="z-index: -500;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 63">
+          <defs>
+            <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#6222ca" />
+              <stop offset="100%" stop-color="#7c3aed" />
+            </linearGradient>
+          </defs>
+          <path class="bg-inward" d="M390,0H0V63C132.73,38.18,256.36,25.76,390,25.76S667.27,38.18,800,63V0Z" />
+        </svg>
+      </div>
+      <div class="sm:flex top-0">
+        <div class="w-auto p-3 mx-auto h-32 xl:h-48 rounded mt-4">
+          <div class="flex flex-col items-center">
+            <div class="mt-4 text-2xl xl:text-4xl font-semibold text-green-300">
+              L'Atelier
+              Créatif
+            </div>
+            <span class="flex justify-center italic text-xs xl:text-sm text-white">Parigné-le-Pôlin</span>
+            <hr class="border-solid border-1 border-green-600 mt-3 w-16" />
+            </div>
+            </div>
+          </div>
+      <app-adminlogin></app-adminlogin>
+    </div>
+  </div>
+</div>

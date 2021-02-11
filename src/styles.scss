@@ -1,0 +1,44 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body{
+  width: 100%;
+  height: 100vh;
+  background-color: #5cb390;
+  background-image: url('./assets/img/background/Sans\ titre-4.png');
+}
+
+.colorstart{
+  background-color: #6222ca;
+  width: 100%;
+  height: 250px;
+}
+
+.colorisersvg{
+  fill: #6222ca;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+ }
+ ::-webkit-scrollbar-thumb {
+  background: linear-gradient(12deg, #2c2c2c 14%,#292929 64%);
+  border-radius: 10px;
+ }
+ ::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(13deg, #c92df0 14%,#6bff9c 64%);
+ }
+ ::-webkit-scrollbar-track{
+  background: #ffffff;
+  border-radius: 9px;
+ }
+
+ .toggle-checkbox:checked {
+  right: 0;
+  border-color: #68D391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #68D391;
+}
