@@ -78,6 +78,10 @@ export class ApiService {
     return this.httpClient.get < Evenements > (this.API_URL_EVENEMENTS, this.options);
   }
 
+  getEvenementsByCategory(categorie: string): Observable < any > {
+    return this.httpClient.get < Evenements > (this.API_URL_EVENEMENTS + '/search?categorie=' + categorie, this.options);
+  }
+
   addEvenement(body: Evenements): Observable < Evenements > {
     return this.httpClient.post < Evenements > (this.API_URL_EVENEMENTS, body, this.options);
   }

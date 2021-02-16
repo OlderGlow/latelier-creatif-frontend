@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Evenements } from 'src/app/models/evenements';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-evenements',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EvenementsComponent implements OnInit {
 
-  constructor() { }
+  evenements: Evenements;
+  constructor(private as: ApiService) { }
 
   ngOnInit(): void {
+    this.as.getEvenementsByCategory('Animation').subscribe(data => {
+      this.evenements = data;
+    });
   }
-
 }

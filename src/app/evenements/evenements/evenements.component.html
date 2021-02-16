@@ -1,1 +1,15 @@
-<p>evenements works!</p>
+<div class="container flex-col mt-6" *ngFor="let evenement of evenements">
+  <p class="text-3xl text-center mb-3 font-semibold uppercase">{{evenement.title}}</p>
+  <hr class="mx-48 mb-6"/>
+  <div class="grid grid-cols-2 ml-4">
+    <div>
+      <p class="text-justify mx-auto">{{evenement.description}}</p>
+      <p>Lieu de l'évènement : {{evenement.lieu}}</p>
+      <p>Date de l'évènement : {{evenement.date | date:('dd-MM-YYYY')}}</p>
+    </div>
+    <img src="{{evenement.image}}" class="p-0 m-0">
+
+  </div>
+
+</div>
+

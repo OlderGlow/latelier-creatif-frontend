@@ -7,10 +7,14 @@
       <div style="display: grid;
       grid-template-rows: 1fr 3fr 1fr 0.5fr;">
         <p class="text-2xl mb-4 text-center paragraphe h-8">{{creation.title}}</p>
-        <img src={{creation.image}} class="rounded-xl border-purple-600 cursor-pointer" *ngIf="creation.image">
+        <button (click)="openModal(creation.id)"><img src={{creation.image}}
+            class="rounded-xl cursor-pointer" *ngIf="creation.image"></button>
         <p class="text-sm mt-2 paragraphe">{{creation.description}}</p>
         <p class="text-xs text-gray-500 italic">Publié le : {{creation.createdAt | date:'shortDate':'CET':'fr'}}</p>
       </div>
+      <app-jw-modal id={{creation.id}} title={{creation.title}} imgsrc={{creation.image}}
+        description={{creation.description}}>
+      </app-jw-modal>
     </div>
   </div>
   <div class="flex flex-col content-end sticky">

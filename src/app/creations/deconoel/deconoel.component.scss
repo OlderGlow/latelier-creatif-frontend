@@ -1,5 +1,6 @@
 img {
-  object-fit: cover;
+  object-fit: scale-down; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
   width:230px;
   height:230px;
 }
