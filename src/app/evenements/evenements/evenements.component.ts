@@ -14,7 +14,7 @@ export class EvenementsComponent implements OnInit {
 
   ngOnInit(): void {
     this.as.getEvenementsByCategory('Animation').subscribe(data => {
-      this.evenements = data;
+      this.evenements = data.filter((item: { published: any; }) => (item.published));
     });
   }
 }

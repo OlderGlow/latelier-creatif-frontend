@@ -1,14 +1,14 @@
-import { ModalService } from './../../services/modale.service';
 import { Component, OnInit } from '@angular/core';
 import { Creations } from 'src/app/models/creations';
 import { ApiService } from 'src/app/services/api.service';
+import { ModalService } from 'src/app/services/modale.service';
 
 @Component({
-  selector: 'app-bricolage',
-  templateUrl: './bricolage.component.html',
-  styleUrls: ['./bricolage.component.scss']
+  selector: 'app-bijoux',
+  templateUrl: './bijoux.component.html',
+  styleUrls: ['./bijoux.component.scss']
 })
-export class BricolageComponent implements OnInit {
+export class BijouxComponent implements OnInit {
 
   cp: any;
   total: any;
@@ -21,7 +21,7 @@ export class BricolageComponent implements OnInit {
   }
 
   fetchData(): void{
-    this.as.getCreationsByCategory('bricolage').subscribe(data => {
+    this.as.getCreationsByCategory('bijoux').subscribe(data => {
       this.creations = data.filter((item: { published: any; }) => (item.published));
     });
   }
@@ -38,4 +38,5 @@ export class BricolageComponent implements OnInit {
   closeModal(id: string): void {
     this.modalService.close(id);
   }
+
 }

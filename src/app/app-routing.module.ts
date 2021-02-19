@@ -1,3 +1,4 @@
+import { BijouxComponent } from './creations/bijoux/bijoux.component';
 import { AddEvenementComponent } from './admin/adminevenements/add/add.component';
 import { EditEvenementComponent } from './admin/adminevenements/edit/edit.component';
 import { EditComponent } from './admin/creations/edit/edit.component';
@@ -74,6 +75,10 @@ const routes: Routes = [{
   {
     path: 'creations/couture',
     component: CoutureComponent
+  },
+  {
+    path: 'creations/bijoux',
+    component: BijouxComponent
   },
   {
     path: 'creations/broderie',

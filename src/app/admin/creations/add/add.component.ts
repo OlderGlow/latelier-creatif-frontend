@@ -23,7 +23,7 @@ export class AddComponent implements OnInit {
   formCreation: FormGroup = this.formBuilder.group({
     title: '',
     description: '',
-    categorie: 'Couture',
+    categorie: 'Bijoux',
   });
 
   constructor(private as: ApiService, private formBuilder: FormBuilder, private router: Router) { }

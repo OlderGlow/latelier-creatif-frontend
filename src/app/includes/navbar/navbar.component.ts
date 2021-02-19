@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 
 export class NavbarComponent implements OnInit {
 
-  stateOpen: boolean = false;
-  stateAdministration: boolean = false;
-  stateCreations: boolean = false;
-  stateEvenements: boolean = false;
-  isAdmin: boolean = false;
+  stateOpen = false;
+  stateAdministration = false;
+  stateCreations = false;
+  stateEvenements = false;
+  isAdmin = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -21,14 +21,17 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line: typedef
   onClick(){
     this.stateOpen = !this.stateOpen;
   }
 
+  // tslint:disable-next-line: typedef
   onClickAdministrationReponsive(){
     this.stateAdministration = !this.stateAdministration;
   }
 
+  // tslint:disable-next-line: typedef
   onClickCreationsResponsive(){
     this.stateCreations = !this.stateCreations;
     if(this.stateAdministration){
@@ -37,6 +40,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line: typedef
   onClickEvenementsResponsive(){
     this.stateEvenements = !this.stateEvenements;
   }

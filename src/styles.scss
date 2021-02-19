@@ -27,9 +27,7 @@ body{
   background: linear-gradient(12deg, #2c2c2c 14%,#292929 64%);
   border-radius: 10px;
  }
- ::-webkit-scrollbar-thumb:hover{
-  background: linear-gradient(13deg, #c92df0 14%,#6bff9c 64%);
- }
+
  ::-webkit-scrollbar-track{
   background: #ffffff;
   border-radius: 9px;
@@ -42,3 +40,5 @@ body{
 .toggle-checkbox:checked + .toggle-label {
   background-color: #68D391;
 }
+
+Button:focus{outline:none}

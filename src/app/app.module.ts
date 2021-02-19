@@ -32,6 +32,8 @@ import { AddComponent } from './admin/creations/add/add.component';
 import { EditComponent } from './admin/creations/edit/edit.component';
 import { LoaderComponent } from './includes/loader/loader.component';
 import { ModalComponent } from './includes/modals/modals.component';
+import { BijouxComponent } from './creations/bijoux/bijoux.component';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { ModalComponent } from './includes/modals/modals.component';
     LoaderComponent,
     ModalComponent,
     EditEvenementComponent,
-    AddEvenementComponent
+    AddEvenementComponent,
+    BijouxComponent,
+    SortPipe,
   ],
   imports: [
     BrowserModule,

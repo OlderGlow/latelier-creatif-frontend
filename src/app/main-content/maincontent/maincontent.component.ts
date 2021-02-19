@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {
   Component,
   OnInit
@@ -10,7 +11,7 @@ import {
 })
 export class MaincontentComponent implements OnInit {
 
-  constructor() {}
+  constructor(public router: Router) {}
 
   ngOnInit(): void {}
 

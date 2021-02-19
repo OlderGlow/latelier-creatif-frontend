@@ -11,7 +11,7 @@ export class TricotComponent implements OnInit {
 
   cp: any;
   total: any;
-  ipp = 6;
+  ipp = 8;
   creations: Creations;
   constructor(private as: ApiService) { }
 

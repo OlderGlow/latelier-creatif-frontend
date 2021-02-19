@@ -26,7 +26,7 @@ export class EditComponent implements OnInit {
   formCreation: FormGroup = this.formBuilder.group({
     title: '',
     description: '',
-    categorie: 'Couture',
+    categorie: 'Bijoux',
     published: ''
   });
 
