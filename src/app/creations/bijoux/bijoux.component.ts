@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { Creations } from 'src/app/models/creations';
 import { ApiService } from 'src/app/services/api.service';
