@@ -1,3 +1,4 @@
+import { ModalService } from './../../services/modale.service';
 import { Component, OnInit } from '@angular/core';
 import { Creations } from 'src/app/models/creations';
 import { ApiService } from 'src/app/services/api.service';
@@ -13,7 +14,7 @@ export class CarterieComponent implements OnInit {
   total: any;
   ipp = 8;
   creations: Creations;
-  constructor(private as: ApiService) { }
+  constructor(private as: ApiService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.fetchData();
@@ -27,5 +28,13 @@ export class CarterieComponent implements OnInit {
 
   handlePageChange(event: any): void {
     this.cp = event;
+  }
+
+  openModal(id: string): void {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string): void {
+    this.modalService.close(id);
   }
 }
