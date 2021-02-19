@@ -3,7 +3,7 @@ $animate: all 0.2s ease-in-out;
 .dropdown:hover .dropdown-menu {
   display: block;
   opacity:100%;
-  animation: fadein 0.5s;
+  animation: fadein 0.5s forwards;
 }
 
 @keyframes fadein{
