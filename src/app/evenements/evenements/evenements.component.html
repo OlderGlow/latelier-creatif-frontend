@@ -1,44 +1,43 @@
-<div class="max-w-xs sm:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto" *ngFor="let evenement of evenements">
-
-  <main class="mt-10" *ngIf="evenements">
-
-    <div class="mb-4 md:mb-0 w-full mx-auto relative">
-      <div class="px-4 lg:px-0">
-        <h2 class="text-4xl font-semibold mb-6 text-center text-gray-800 leading-tight">
-          {{evenement.title}}
-        </h2>
+<div class="flex flex-grow">
+  <div class="bg-gray-100 w-full min-h-screen rounded-xl mt-4 mx-8 sm:mx-12 lg:mx-48 mb-2" *ngIf="evenements">
+    <main class="mt-10" *ngFor="let evenement of evenements">
+      <div class="mb-4">
+        <div class="px-4 lg:px-0">
+          <h2 class="text-4xl font-semibold mb-6 text-center text-gray-800 leading-tight">
+            {{evenement.title}}
+          </h2>
+        </div>
+        <img src="{{evenement.image}}" class="w-full object-cover lg:rounded" style="height: 28em;" />
       </div>
 
-      <img src="{{evenement.image}}" class="w-full object-cover lg:rounded" style="height: 28em;" />
-    </div>
+      <div class="flex flex-col lg:flex-row lg:space-x-12">
 
-    <div class="flex flex-col lg:flex-row lg:space-x-12">
+        <div class="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
+          <p class="pb-6 text-justify">{{evenement.description}}</p>
+        </div>
 
-      <div class="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
-        <p class="pb-6 text-justify">{{evenement.description}}</p>
-      </div>
-
-      <div class="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
-        <div class="p-4 border-t border-b md:border md:rounded">
-          <p class="py-3 rounded-2xl text-center bg-green-500 text-white">
-            Lieu : <span class="font-semibold">{{evenement.lieu}}</span>
-          </p>
-          <br>
-          <p class="py-3 rounded-2xl text-center bg-purple-600 text-white">
-            Date : <span class="font-semibold">{{evenement.date | date:"dd/MM/YYYY"}}</span>
-          </p>
+        <div class="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
+          <div class="p-4 border-t border-b md:border md:rounded">
+            <p class="py-3 rounded-2xl text-center bg-green-500 text-white">
+              Lieu : <span class="font-semibold">{{evenement.lieu}}</span>
+            </p>
+            <br>
+            <p class="py-3 rounded-2xl text-center bg-purple-600 text-white">
+              Date : <span class="font-semibold">{{evenement.date | date:"dd/MM/YYYY"}}</span>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <hr class="mt-8 mb-8 mx-48 p-0.5">
-  </main>
-</div>
+      <hr class="mt-8 mb-8 mx-48 p-0.5">
+    </main>
+  </div>
 
-<div class="flex flex-col" *ngIf="!evenements">
-  <app-loader style="  position: fixed;
+  <div class="flex flex-col" *ngIf="!evenements">
+    <app-loader style="  position: fixed;
 top: 50%;
 left: 50%;
 margin-top: -50px;
 margin-left: -100px;">
-  </app-loader>
+    </app-loader>
+  </div>
 </div>
