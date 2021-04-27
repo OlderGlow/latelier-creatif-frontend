@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Creations } from 'src/app/models/creations';
 import { ApiService } from 'src/app/services/api.service';
 import * as _ from 'lodash';
+import imageCompression from 'browser-image-compression';
 
 @Component({
   selector: 'app-edit',
@@ -22,6 +23,7 @@ export class EditComponent implements OnInit {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
+  isCompressing = false;
 
   formCreation: FormGroup = this.formBuilder.group({
     title: '',
@@ -47,8 +49,7 @@ export class EditComponent implements OnInit {
       });
       this.imgURL = this.creation.image;
 
-    },
-    () => console.log('cc')
+    }
     );
   }
 
@@ -64,57 +65,26 @@ export class EditComponent implements OnInit {
     this.as.editCreations(this.id, this.creation).toPromise().then(e => this.router.navigate(['/admin/creations']));
   }
 
-  fileChangeEvent(fileInput: any) {
-    this.imageError = null;
-    if (fileInput.target.files && fileInput.target.files[0]) {
-        // Size Filter Bytes
-        const max_size = 20971520;
-        const allowed_types = ['image/png', 'image/jpeg'];
-        const max_height = 15200;
-        const max_width = 25600;
+  async handleImageUpload(event): Promise<any> {
 
-        if (fileInput.target.files[0].size > max_size) {
-            this.imageError =
-                'Maximum size allowed is ' + max_size / 1000 + 'Mb';
+    const imageFile = event.target.files[0];
+    const options = {
+      maxSizeMB: 0.02,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true
+    };
 
-            return false;
-        }
-
-        if (!_.includes(allowed_types, fileInput.target.files[0].type)) {
-            this.imageError = 'Only Images are allowed ( JPG | PNG )';
-            return false;
-        }
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-            const image = new Image();
-            image.src = e.target.result;
-            image.onload = rs => {
-                const img_height = rs.currentTarget['height'];
-                const img_width = rs.currentTarget['width'];
-
-                console.log(img_height, img_width);
-
-
-                if (img_height > max_height && img_width > max_width) {
-                    this.imageError =
-                        'Maximum dimentions allowed ' +
-                        max_height +
-                        '*' +
-                        max_width +
-                        'px';
-                    return false;
-                } else {
-                    const imgBase64Path = e.target.result;
-                    this.cardImageBase64 = imgBase64Path;
-                    this.isImageSaved = true;
-                    // this.previewImagePath = imgBase64Path;
-                }
-            };
-        };
-
-        reader.readAsDataURL(fileInput.target.files[0]);
+    try {
+      this.isCompressing = true;
+      const compressedFile = await imageCompression(imageFile, options);
+      this.isCompressing = false;
+      const x = imageCompression.getDataUrlFromFile(compressedFile);
+      this.cardImageBase64 = (await x).toString();
+    } catch (error) {
+      console.log(error);
     }
-}
+
+  }
 
 
   preview(files: string | any[]): void {

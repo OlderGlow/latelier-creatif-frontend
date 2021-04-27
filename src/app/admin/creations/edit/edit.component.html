@@ -55,7 +55,7 @@
                 <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7 ml-4">
                   <label class="leading-loose">Ajouter une image</label>
                   <span class="text-red-500 mx-auto">{{message}}</span>
-                  <input style="display: none" type="file" (change)="fileChangeEvent($event)" #file #fileInput
+                  <input style="display: none" type="file" (change)="handleImageUpload($event)" #file #fileInput
                     (change)="preview(file.files)">
                   <button class="bg-green-600 text-white rounded mt-3 p-2" (click)="fileInput.click()">Choississez
                     votre fichier</button>
@@ -67,12 +67,7 @@
 
           <div class="pt-4 grid grids-col-2 sm:flex sm:items-center sm:space-x-4">
             <button (click)="addCreation()"
-              class="bg-purple-600 mb-2 sm:mb-0 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Envoyer<svg
-                class="w-6 h-6 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
-              </svg></button>
+              class="bg-purple-600 mb-2 sm:mb-0 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Modifier la création</button>
           </div>
         </div>
       </div>
