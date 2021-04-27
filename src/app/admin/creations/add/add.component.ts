@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import * as _ from 'lodash';
+import imageCompression from 'browser-image-compression';
 
 @Component({
   selector: 'app-add',
@@ -19,6 +20,7 @@ export class AddComponent implements OnInit {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
+  isLoading: boolean;
 
   formCreation: FormGroup = this.formBuilder.group({
     title: '',
@@ -31,7 +33,7 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addCreation(): void{
+  addCreation(creation): void{
     this.creation = {
       title: this.formCreation.value.title,
       description: this.formCreation.value.description,
@@ -40,15 +42,41 @@ export class AddComponent implements OnInit {
       published: true,
       date: new Date()
     };
-    console.log(this.creation);
+    this.isLoading = true;
     this.as.addCreations(this.creation).toPromise().then(e => this.router.navigate(['/admin/creations']));
   }
 
+  async handleImageUpload(event): Promise<any> {
+
+    const imageFile = event.target.files[0];
+    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+
+    const options = {
+      maxSizeMB: 0.02,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true
+    };
+
+    try {
+      console.log('compression en attente');
+      const compressedFile = await imageCompression(imageFile, options);
+      console.log('compression terminée');
+      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+      console.log(compressedFile);
+      const x = imageCompression.getDataUrlFromFile(compressedFile);
+      this.cardImageBase64 = (await x).toString();
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
   fileChangeEvent(fileInput: any) {
+    console.log(fileInput);
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
         // Size Filter Bytes
-        const max_size = 20971520;
+        const max_size = 10000;
         const allowed_types = ['image/png', 'image/jpeg'];
         const max_height = 15200;
         const max_width = 25600;

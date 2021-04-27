@@ -1,4 +1,4 @@
-  <div class="py-6 flex flex-col justify-center sm:py-4">
+  <div class="py-6 flex flex-col justify-center sm:py-4" *ngIf="!isLoading">
     <div class="py-3 sm:w-max sm:mx-auto">
       <div class="px-4 py-10 bg-white mx-0 md:mx-0 shadow rounded-3xl sm:p-10">
         <div class="mx-auto">
@@ -44,7 +44,7 @@
                   <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7 ml-4">
                     <label class="leading-loose">Ajouter une image</label>
                     <span class="text-red-500 mx-auto">{{message}}</span>
-                    <input style="display: none" type="file" (change)="fileChangeEvent($event)" #file #fileInput
+                    <input style="display: none" type="file" (change)="handleImageUpload($event)" #file #fileInput
                       (change)="preview(file.files)">
                     <button class="bg-green-600 text-white rounded mt-3 p-2" (click)="fileInput.click()">Choississez
                       votre fichier</button>
@@ -68,4 +68,10 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="relative pt-1" *ngIf="isLoading">
+    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+      <div style="width: 30px;" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
+    </div>
   </div>

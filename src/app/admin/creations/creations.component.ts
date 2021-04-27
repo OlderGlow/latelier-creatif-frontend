@@ -24,7 +24,7 @@ export class CreationsComponent implements OnInit {
   creations: Creations;
   objectKeys = Object.keys;
   id: number;
-  ipp = 6;
+  ipp = 10;
   cp: any;
   total: any;
 
@@ -40,7 +40,6 @@ export class CreationsComponent implements OnInit {
 
   fetchData(): void {
     this.as.getCreations().subscribe(data => {
-      console.log(data);
       this.creations = data;
     });
   }
