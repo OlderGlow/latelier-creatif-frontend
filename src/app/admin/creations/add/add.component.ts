@@ -33,7 +33,7 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addCreation(creation): void{
+  addCreation(): void{
     this.creation = {
       title: this.formCreation.value.title,
       description: this.formCreation.value.description,

@@ -146,6 +146,10 @@ const routes: Routes = [{
     path: 'admin/evenements/add',
     component: AddEvenementComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    redirectTo: 'admin/home'
   }
 ];
 
