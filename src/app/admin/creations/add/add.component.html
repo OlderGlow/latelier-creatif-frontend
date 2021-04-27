@@ -46,8 +46,9 @@
                     <span class="text-red-500 mx-auto">{{message}}</span>
                     <input style="display: none" type="file" (change)="handleImageUpload($event)" #file #fileInput
                       (change)="preview(file.files)">
-                    <button class="bg-green-600 text-white rounded mt-3 p-2" (click)="fileInput.click()">Choississez
+                    <button class="bg-green-600 text-white rounded mt-3 p-2" (click)="fileInput.click()" *ngIf="!isCompressing">Choississez
                       votre fichier</button>
+                      <button class="bg-green-600 text-white rounded mt-3 p-2" (click)="fileInput.click()" *ngIf="isCompressing">Photo en cours de compression</button>
                     <img class="mt-2" [src]="imgURL" height="200" width="200" *ngIf="imgURL">
                   </div>
                 </div>
@@ -55,14 +56,8 @@
           </form>
 
           <div class="pt-4 grid grids-col-2 sm:flex sm:items-center sm:space-x-4">
-            <button (click)="addCreation()"
-              class="bg-purple-600 mb-2 sm:mb-0 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Envoyer<svg
-                class="ml-1 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                </path>
-              </svg></button>
+            <button *ngIf="!isCompressing" (click)="addCreation()"
+              class="bg-purple-600 mb-2 sm:mb-0 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Publier la création</button>
           </div>
         </div>
       </div>

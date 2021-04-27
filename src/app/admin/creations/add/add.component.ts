@@ -21,7 +21,7 @@ export class AddComponent implements OnInit {
   isImageSaved: boolean;
   cardImageBase64: string;
   isLoading: boolean;
-
+  isCompressing = false;
   formCreation: FormGroup = this.formBuilder.group({
     title: '',
     description: '',
@@ -49,20 +49,16 @@ export class AddComponent implements OnInit {
   async handleImageUpload(event): Promise<any> {
 
     const imageFile = event.target.files[0];
-    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
-
     const options = {
       maxSizeMB: 0.02,
-      maxWidthOrHeight: 960,
+      maxWidthOrHeight: 1920,
       useWebWorker: true
     };
 
     try {
-      console.log('compression en attente');
+      this.isCompressing = true;
       const compressedFile = await imageCompression(imageFile, options);
-      console.log('compression terminée');
-      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
-      console.log(compressedFile);
+      this.isCompressing = false;
       const x = imageCompression.getDataUrlFromFile(compressedFile);
       this.cardImageBase64 = (await x).toString();
     } catch (error) {
