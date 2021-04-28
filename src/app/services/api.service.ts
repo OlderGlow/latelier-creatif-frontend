@@ -49,12 +49,13 @@ export class ApiService {
     return this.httpClient.post(this.API_URL_MAIL, body, this.options);
   }
 
-  getCreations(): Observable < any > {
-    return this.httpClient.get < Creations > (this.API_URL_CREATIONS, this.options);
+  getCreations(id: number, ipp: number): Observable < any > {
+    return this.httpClient.get < Creations > (this.API_URL_CREATIONS + '?page=' + id + '&size=' + ipp, this.options);
   }
 
-  getCreationsByCategory(categorie: string): Observable < any > {
-    return this.httpClient.get < Creations > (this.API_URL_CREATIONS + '/search?categorie=' + categorie, this.options);
+  getCreationsByCategory(categorie: string, id: number, ipp: number): Observable < any > {
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.get < Creations > (this.API_URL_CREATIONS + '/search?categorie=' + categorie + '&page=' + id + '&size=' + ipp, this.options);
   }
 
   addCreations(body: Creations): Observable < Creations > {

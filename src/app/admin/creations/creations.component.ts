@@ -24,27 +24,33 @@ export class CreationsComponent implements OnInit {
   creations: Creations;
   objectKeys = Object.keys;
   id: number;
-  ipp = 10;
+  ipp = 6;
   cp: any;
   total: any;
+  isLoading = true;
 
   constructor(private as: ApiService) {}
 
   ngOnInit(): void {
-    this.fetchData();
+    this.fetchData(0, this.ipp);
   }
 
   deleteCreation(id: string): void {
-    this.as.deleteCreation(id).subscribe(() => this.fetchData());
+    this.as.deleteCreation(id).subscribe(() => this.fetchData(this.cp, this.ipp));
   }
 
-  fetchData(): void {
-    this.as.getCreations().subscribe(data => {
-      this.creations = data;
+  fetchData(id: number, ipp: number): void {
+    this.as.getCreations(id, this.ipp).subscribe(data => {
+      this.creations = data.items;
+      this.total = data.totalItems;
+      this.isLoading = false;
     });
   }
 
   handlePageChange(event: any): void {
+    this.creations = null;
+    this.isLoading = true;
+    this.fetchData(event - 1, this.ipp);
     this.cp = event;
   }
 

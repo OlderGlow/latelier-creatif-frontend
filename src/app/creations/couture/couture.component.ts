@@ -20,25 +20,26 @@ import {
 })
 export class CoutureComponent implements OnInit {
 
-  cp: any;
+  cp: any = 0;
   total: any;
-  ipp = 8;
+  ipp = 6;
   creations: Creations;
-  constructor(private as: ApiService, private modalService: ModalService) {}
+  constructor(private as: ApiService, private modalService: ModalService) { }
 
   ngOnInit(): void {
-    this.fetchData();
-    }
+    this.fetchData(this.cp);
+  }
 
-
-  // tslint:disable-next-line: typedef
-  fetchData() {
-    this.as.getCreationsByCategory('couture').subscribe(data => {
-      this.creations = data.filter((item: { published: any; }) => (item.published));
+  fetchData(id): void{
+    this.as.getCreationsByCategory('couture', id, this.ipp).subscribe(data => {
+      this.creations = data.items.filter((item: { published: any; }) => (item.published));
+      this.total = data.totalItems;
     });
   }
 
   handlePageChange(event: any): void {
+    this.creations = null;
+    this.fetchData(event - 1);
     this.cp = event;
   }
 

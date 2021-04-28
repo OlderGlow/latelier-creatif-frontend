@@ -10,26 +10,28 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class BricolageComponent implements OnInit {
 
-  cp: any;
+  cp: any = 0;
   total: any;
-  ipp = 8;
+  ipp = 6;
   creations: Creations;
   constructor(private as: ApiService, private modalService: ModalService) { }
 
   ngOnInit(): void {
-    this.fetchData();
+    this.fetchData(this.cp);
   }
 
-  fetchData(): void{
-    this.as.getCreationsByCategory('bricolage').subscribe(data => {
-      this.creations = data.filter((item: { published: any; }) => (item.published));
+  fetchData(id): void{
+    this.as.getCreationsByCategory('bricolage', id, this.ipp).subscribe(data => {
+      this.creations = data.items.filter((item: { published: any; }) => (item.published));
+      this.total = data.totalItems;
     });
   }
 
   handlePageChange(event: any): void {
+    this.creations = null;
+    this.fetchData(event - 1);
     this.cp = event;
   }
-
 
   openModal(id: string): void {
     this.modalService.open(id);
