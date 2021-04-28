@@ -12,6 +12,7 @@ import {
   registerLocaleData
 } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { ModalService } from 'src/app/services/modale.service';
 
 registerLocaleData(localeFr, 'fr');
 @Component({
@@ -29,7 +30,7 @@ export class CreationsComponent implements OnInit {
   total: any;
   isLoading = true;
 
-  constructor(private as: ApiService) {}
+  constructor(private as: ApiService, private modalService: ModalService) {}
 
   ngOnInit(): void {
     this.fetchData(0, this.ipp);
@@ -57,5 +58,13 @@ export class CreationsComponent implements OnInit {
   handlePageSizeChange(event: any): void {
     this.ipp = event.target.value;
     this.cp = 1;
+  }
+
+  openModal(id: string): void {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string): void {
+    this.modalService.close(id);
   }
 }
