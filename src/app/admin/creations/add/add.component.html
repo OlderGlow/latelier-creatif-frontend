@@ -1,6 +1,6 @@
-  <div class="py-6 flex flex-col justify-center sm:py-4" *ngIf="!isLoading">
-    <div class="py-3 sm:w-max sm:mx-auto">
-      <div class="px-4 py-10 bg-white mx-0 md:mx-0 shadow rounded-3xl sm:p-10">
+  <div class="flex flex-col justify-center sm:py-4" *ngIf="!isLoading">
+    <div class="sm:py-3 sm:w-max sm:mx-auto">
+      <div class="px-4 py-10 bg-white mx-0 md:mx-0 shadow sm:rounded-3xl sm:p-10">
         <div class="mx-auto">
           <div class="flex justify-center space-x-5">
             <div class="block pl-2 font-semibold text-xl text-gray-700">
@@ -34,15 +34,15 @@
                     </select>
                   </div>
                 </div>
-                <div class="grid grid-cols-2">
+                <div class="sm:grid sm:grid-cols-2">
                   <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7">
                     <label class="leading-loose">Description</label>
-                    <textarea rows=10 cols=10
+                    <textarea rows=5 cols=5
                       class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Entrez votre description ici" formControlName="description"></textarea>
                   </div>
-                  <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7 ml-4">
-                    <label class="leading-loose">Ajouter une image</label>
+                  <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7 sm:ml-4">
+                    <label class="text-center mt-3 leading-loose">Ajouter une image</label>
                     <span class="text-red-500 mx-auto">{{message}}</span>
                     <input style="display: none" type="file" (change)="handleImageUpload($event)" #file #fileInput
                       (change)="preview(file.files)">
@@ -55,7 +55,7 @@
               </div>
           </form>
 
-          <div class="pt-4 grid grids-col-2 sm:flex sm:items-center sm:space-x-4">
+          <div class="pt-4 mt-3 grid grids-col-2 sm:flex sm:items-center sm:space-x-4">
             <button *ngIf="!isCompressing" (click)="addCreation()"
               class="bg-purple-600 mb-2 sm:mb-0 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Publier la création</button>
           </div>
