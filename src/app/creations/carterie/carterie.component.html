@@ -3,9 +3,8 @@
     <div *ngFor="let creation of creations | paginate: {
       itemsPerPage: ipp,
       currentPage: cp,
-      totalItems: total }" class="mt-8 mx-auto">
-
-      <div class="mx-auto text-xl text-center sm:hidden mb-2 "><p>{{creation.title}}</p></div>
+      totalItems: total }" class="mt-8 flex flex-col divide-y divide-yellow-500 items-center">
+      <div class="text-xl text-center sm:hidden mb-6"><p>{{creation.title}}</p></div>
       <div style="position: relative;">
         <button (click)="openModal(creation.id)">
           <div class="img-container rounded-xl static" style="background-image: url({{creation.image}});">
@@ -16,6 +15,7 @@
             </div>
           </div>
         </button>
+        <hr class="mt-6 sm:hidden"/>
       </div>
       <app-jw-modal id={{creation.id}} title={{creation.title}} imgsrc={{creation.image}}
         description={{creation.description}}>
@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="flex flex-col content-end sticky">
-    <hr class="mt-6" />
+    <hr class="hidden sm:mt-6 sm:flex" />
     <pagination-controls (pageChange)="handlePageChange($event)" class="mx-auto mt-8" previousLabel="Précédent"
       nextLabel="Suivant" responsive="true" autoHide="true"></pagination-controls>
   </div>

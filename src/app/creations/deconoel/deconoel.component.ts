@@ -12,7 +12,7 @@ export class DeconoelComponent implements OnInit {
 
   cp: any = 0;
   total: any;
-  ipp = 6;
+  ipp = 8;
   creations: Creations;
   constructor(private as: ApiService, private modalService: ModalService) { }
 
