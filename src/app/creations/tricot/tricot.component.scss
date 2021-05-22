@@ -47,7 +47,6 @@ Button:focus{outline:none}
   }
 }
 
-
 @media screen and (device-aspect-ratio: 2/3) {
   .img-container {
     width: 200px;
@@ -58,6 +57,15 @@ Button:focus{outline:none}
 }
 
 @media screen and (device-aspect-ratio: 40/71) {
+  .img-container {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@media screen and (max-width: 368px) {
   .img-container {
     width: 200px;
     height: 200px;

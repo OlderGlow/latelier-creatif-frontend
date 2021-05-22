@@ -3,7 +3,7 @@
     <div *ngFor="let creation of creations | paginate: {
       itemsPerPage: ipp,
       currentPage: cp,
-      totalItems: total }" class="mt-8 flex flex-col divide-y divide-yellow-500 items-center">
+      totalItems: total }" class="mt-8 flex flex-col items-center">
       <div class="text-xl text-center sm:hidden mb-6"><p>{{creation.title}}</p></div>
       <div style="position: relative;">
         <button (click)="openModal(creation.id)">
