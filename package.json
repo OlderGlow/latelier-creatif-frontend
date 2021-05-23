@@ -1,6 +1,6 @@
 {
   "name": "ateliercreatif",
-  "version": "0.9.7.1",
+  "version": "0.9.8",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
