@@ -1,14 +1,14 @@
-<div class="pb-6 flex flex-col justify-center sm:py-4">
+<div class="flex flex-col justify-center sm:py-4" *ngIf="!isLoading">
   <div class="sm:py-3 sm:w-max sm:mx-auto">
     <div class="px-4 py-10 bg-white mx-0 md:mx-0 shadow sm:rounded-3xl sm:p-10">
       <div class="mx-auto">
         <div class="flex justify-center space-x-5">
           <div class="block pl-2 font-semibold text-xl text-gray-700">
-            <h2 class="leading-relaxed text-center mb-3">Modifier la création</h2>
+            <h2 class="leading-relaxed text-center mb-3">Modifier une création</h2>
           </div>
         </div>
-        <div class="divide-y divide-gray-200">
-          <form [formGroup]="formCreation" onsubmit="addCreation()">
+          <div class="divide-y divide-gray-200">
+        <form [formGroup]="formCreation" onsubmit="addCreation()">
             <div class="grid grids-col-2">
               <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                 <div class="grid grid-cols-1 sm:space-x-4">
@@ -34,43 +34,39 @@
                   </select>
                 </div>
               </div>
-              <div class="flex flex-row justify-between mb-4">
-                <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7">
-                  <label class="leading-loose">Article publié</label>
-                  </div>
-                <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                  <input type="checkbox" name="toggle" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" formControlName="published"/>
-                  <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-              </div>
-              </div>
-
-
-              <div class="grid grid-cols-2">
+              <div class="sm:grid sm:grid-cols-2">
                 <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7">
                   <label class="leading-loose">Description</label>
-                  <textarea rows=10 cols=10
+                  <textarea rows=5 cols=5
                     class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                     placeholder="Entrez votre description ici" formControlName="description"></textarea>
                 </div>
-                <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7 ml-4">
-                  <label class="leading-loose">Ajouter une image</label>
+                <div class="flex flex-col text-gray-700 sm:text-lg sm:leading-7 sm:ml-4">
+                  <label class="text-center mt-3 leading-loose">Ajouter une image</label>
                   <span class="text-red-500 mx-auto">{{message}}</span>
                   <input style="display: none" type="file" (change)="handleImageUpload($event)" #file #fileInput
                     (change)="preview(file.files)">
-                  <button class="bg-green-600 text-white rounded mt-3 p-2" (click)="fileInput.click()">Choississez
+                  <button class="bg-green-600 text-white rounded mt-3 p-2" (click)="fileInput.click()" *ngIf="!isCompressing">Choississez
                     votre fichier</button>
+                    <button class="bg-green-600 text-white rounded mt-3 p-2" (click)="fileInput.click()" *ngIf="isCompressing">Photo en cours de compression</button>
                   <img class="mt-2" [src]="imgURL" height="200" width="200" *ngIf="imgURL">
                 </div>
               </div>
             </div>
-          </form>
+        </form>
 
-          <div class="pt-4 grid grids-col-2 sm:flex sm:items-center sm:space-x-4">
-            <button (click)="addCreation()"
-              class="bg-purple-600 mb-2 sm:mb-0 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Modifier la création</button>
-          </div>
+        <div class="pt-4 mt-3 grid grids-col-2 sm:flex sm:items-center sm:space-x-4">
+          <button *ngIf="!isCompressing" (click)="addCreation()"
+            class="bg-purple-600 mb-2 sm:mb-0 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Publier la création</button>
         </div>
       </div>
     </div>
-
   </div>
+
+</div>
+
+<div class="relative pt-1" *ngIf="isLoading">
+  <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+    <div style="width: 30px;" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
+  </div>
+</div>

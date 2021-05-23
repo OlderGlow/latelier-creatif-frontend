@@ -24,6 +24,7 @@ export class EditComponent implements OnInit {
   isImageSaved: boolean;
   cardImageBase64: string;
   isCompressing = false;
+  isLoading: boolean;
 
   formCreation: FormGroup = this.formBuilder.group({
     title: '',
