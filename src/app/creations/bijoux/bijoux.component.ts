@@ -32,6 +32,7 @@ export class BijouxComponent implements OnInit {
     this.creations = null;
     this.fetchData(event - 1);
     this.cp = event;
+    window.scrollTo(0,0);
   }
 
   openModal(id: string): void {
