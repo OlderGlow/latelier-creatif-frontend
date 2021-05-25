@@ -49,6 +49,7 @@ export class CreationsComponent implements OnInit {
   }
 
   handlePageChange(event: any): void {
+    window.scrollTo(0,0);
     this.creations = null;
     this.isLoading = true;
     this.fetchData(event - 1, this.ipp);
