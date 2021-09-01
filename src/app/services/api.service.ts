@@ -75,8 +75,8 @@ export class ApiService {
   }
 
   /* METHODS API EVENEMENTS */
-  getEvenements(): Observable < any > {
-    return this.httpClient.get < Evenements > (this.API_URL_EVENEMENTS, this.options);
+  getEvenements(id: number, ipp: number): Observable < any > {
+    return this.httpClient.get < Evenements > (this.API_URL_EVENEMENTS + '?page=' + id + '&size=' + ipp, this.options);
   }
 
   getEvenementsByCategory(categorie: string): Observable < any > {
