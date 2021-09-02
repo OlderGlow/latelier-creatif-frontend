@@ -9,12 +9,27 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class EvenementsComponent implements OnInit {
 
+  cp: any = 0;
+  total: any;
+  ipp = 8;
   evenements: Evenements;
   constructor(private as: ApiService) { }
 
   ngOnInit(): void {
-    this.as.getEvenementsByCategory('Animation').subscribe(data => {
-      this.evenements = data.filter((item: { published: any; }) => (item.published));
+    this.fetchData(this.cp);
+  }
+
+  fetchData(id): void{
+    this.as.getEvenementsByCategory('Animation', id, this.ipp).subscribe(data => {
+      this.evenements = data.items.filter((item: { published: any; }) => (item.published));
+      this.total = data.totalItems;
     });
+  }
+
+  handlePageChange(event: any): void {
+    this.evenements = null;
+    this.fetchData(event - 1);
+    this.cp = event;
+    window.scrollTo(0,0);
   }
 }

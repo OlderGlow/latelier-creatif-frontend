@@ -79,8 +79,9 @@ export class ApiService {
     return this.httpClient.get < Evenements > (this.API_URL_EVENEMENTS + '?page=' + id + '&size=' + ipp, this.options);
   }
 
-  getEvenementsByCategory(categorie: string): Observable < any > {
-    return this.httpClient.get < Evenements > (this.API_URL_EVENEMENTS + '/search?categorie=' + categorie, this.options);
+  getEvenementsByCategory(categorie: string, id: number, ipp: number): Observable < any > {
+    // tslint:disable-next-line:max-line-length
+    return this.httpClient.get < Evenements > (this.API_URL_EVENEMENTS + '/search?categorie=' + categorie + '&page=' + id + '&size=' + ipp, this.options);
   }
 
   addEvenement(body: Evenements): Observable < Evenements > {
